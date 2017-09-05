@@ -32,6 +32,7 @@ QSqlDatabase SqlAbstractTable::getConnection()
     conn.setHostName("localhost");
     conn.setDatabaseName("bigdata");
     conn.setUserName("root");
+    conn.setPassword("123456");
 
     if (!conn.open()) {
         qDebug() << "Failed to connect!";

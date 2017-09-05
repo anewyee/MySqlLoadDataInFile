@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     db.setHostName("localhost");
     db.setDatabaseName("bigdata");
     db.setUserName("root");
+    db.setPassword("123456");
 
     if (!db.open()) {
         qDebug() << "Failed to connect!";
@@ -34,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(products, SIGNAL(queryExecuted()),
             this, SLOT(on_queryExecuted()));
     tables.append(products);
+    qDebug()<<products;
 
     orders = new SqlRelatedTable(ui->tbvOrders, "orders",
                                  QSqlRelation("products", "id", "article"));
@@ -46,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(on_queryExecuted()));
     tables.append(chart);
 
+    //当前操作的table
     currentTable = tables.at(ui->tabWidget->currentIndex());
 
     ui->lbQueryMsg->setVisible(false);

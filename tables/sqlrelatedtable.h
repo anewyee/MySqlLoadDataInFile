@@ -13,6 +13,7 @@ public:
     void select();
 private:
     QSqlRelationalTableModel *model;
+
 };
 
 #endif // ORDERS_H
